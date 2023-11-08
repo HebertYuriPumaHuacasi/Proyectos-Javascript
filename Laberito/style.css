@@ -1,0 +1,9 @@
+#myCanvas {
+    border: 1.5px solid #38f;
+    background-color: white;
+}
+
+#btnReset{
+    display: grid;
+    place-content: center;
+}
