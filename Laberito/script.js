@@ -1,5 +1,4 @@
-var cols, rows = 0;
-var gridSize = 40; 
+var gridSize = 20; 
 var canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext('2d');
 const width = canvas.width;
@@ -8,12 +7,13 @@ const height = canvas.height;
 let terminado = false;
 let stack = [];
 let casillas = [];
+let camino = [];
 
-/*ctx.shadowColor = "#d53";
+ctx.shadowColor = "#d53";
 ctx.shadowBlur = 12;
 ctx.lineJoin = "bevel";
 ctx.lineWidth = 1;
-ctx.strokeStyle = "#38f";*/
+ctx.strokeStyle = "#38f";
 
 
 class Casilla {
@@ -61,7 +61,7 @@ class Casilla {
 
             if(vecinoBajoChequeo && !vecinoBajoChequeo.visited){
                 vecinos.push(vecinoBajoChequeo);
-            }
+            }   
         }
 
         if(vecinos.length>0){
@@ -132,6 +132,7 @@ function crearArrayCasilla(){
 
 crearArrayCasilla();
 
+
 let elejida;
 let actual = casillas[0];
 actual.visited = true;
@@ -139,7 +140,7 @@ stack.push(actual);
 
 function mazeGenerator(){
     if(stack.length > 0){
-        console.log(stack.length);
+        //console.log(stack.length);
         ctx.clearRect(0,0,width,height);
         actual = stack.pop();
         elegida = actual.checkvecinos();
@@ -168,6 +169,28 @@ setInterval(mazeGenerator,1000/60);
 document.addEventListener("click", (event) => {
     if(event.target.id === 'reset' && terminado) {
         location.reload();
-        console.log("hola");
     }
 });
+
+
+console.log();
+
+/*console.log(actual);
+document.addEventListener("keydown", (event) => {
+    switch (even    t.key) {
+        case "ArrowRight":
+            ctx.clearRect(0,0,width,height);
+
+          break;
+        case "ArrowUp":
+          moveUp();
+          break;
+        case "ArrowDown":
+          moveDown();   
+          break;
+        case "ArrowLeft":
+          moveLeft();
+          break;
+    }
+});*/
+
